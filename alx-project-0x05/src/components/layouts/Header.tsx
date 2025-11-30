@@ -1,33 +1,12 @@
 import Link from "next/link";
 import Button from "../common/Button";
 import { usePathname } from "next/navigation";
-import { useCount } from "../../../context/CountContext";
-import { useEffect, useState } from "react";
+import { useCount } from "@/context/CountContext"";
 
 const Header: React.FC = () => {
-  const pathname = usePathname();
-  const { count } = useCount();
-  const [mounted, setMounted] = useState(false);
 
-  // This ensures we only use pathname after component mounts (client-side)
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return (
-      <header className="fixed w-full bg-white shadow-md">
-        <div className="container mx-auto flex justify-between items-center py-6 px-4 md:px-8">
-          <Link href="/" className="text-3xl md:text-5xl font-bold text-gray-800 tracking-tight">
-            Splash App
-          </Link>
-          <div className="flex gap-4">
-            <p className="font-semibold text-lg">Loading...</p>
-          </div>
-        </div>
-      </header>
-    );
-  }
+  const pathname = usePathname()
+  const { count } = useCount()
 
   return (
     <header className="fixed w-full bg-white shadow-md">
@@ -39,21 +18,21 @@ const Header: React.FC = () => {
         {/* Button Group */}
         <div className="flex gap-4">
           {
-            !["/counter-app"].includes(pathname!) ? (
+            !["/counter-app"].includes(pathname) ? (
               <>
-                <Button
-                  buttonLabel="Sign In"
-                  buttonBackgroundColor="red"
-                />
-                <Button
-                  buttonLabel="Sign Up"
-                  buttonBackgroundColor="blue"
-                />
-              </>
+              <Button
+            buttonLabel="Sign In"
+            buttonBackgroundColor="red"
+          />
+          <Button
+            buttonLabel="Sign Up"
+            buttonBackgroundColor="blue"
+          /></>
             ) : (
-              <p className="font-semibold text-lg">Current count : {count}</p>
+              <p className=" font-semibold text-lg">Current count : {count}</p>
             )
           }
+
         </div>
       </div>
     </header>
