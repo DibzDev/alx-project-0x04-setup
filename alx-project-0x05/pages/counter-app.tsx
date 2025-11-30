@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useCount } from '@/context/CountContext';
+import { useCount } from '../context/CountContext';
 
 const CounterApp: React.FC = () => {
   const { count, increment, decrement } = useCount();
