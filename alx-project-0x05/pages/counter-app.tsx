@@ -1,4 +1,4 @@
-import { useCount } from '@/context/CountContext.tsx';
+import { useCount } from '../context/CountContext';
 
 const CounterApp: React.FC = () => {
   const { count, increment, decrement } = useCount();
